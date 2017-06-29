@@ -397,7 +397,7 @@ class Compiler(object):
       with scope('analyze'):
         permutations = sorted(all_permutations(range(n)),key=permutation_id)
         sequences = [None]*len(permutations)
-        unordered = zip([coef_to_id[c] for c in coefficients],[numpy.asarray(m.degrees()).reshape(n,d) for m in expansion.monomials()])
+        unordered = zip([coef_to_id[c] for c in coefficients],[numpy.asarray(list(m.degrees())).reshape(n,d) for m in expansion.monomials()])
         assert numpy.all(unordered[-1][1]==0)
         unordered = unordered[:-1]
         weights = numpy.int64(n)**numpy.arange(n*d).reshape(n,d)
